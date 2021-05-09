@@ -3,26 +3,27 @@ import React, { useState } from 'react';
 import Section from '../Section/Section';
 import { Container, NavBar, Menu, HamburgerMenu, Bar, LinksContainer } from './NavElements';
 const NavElements = () => {
- const [active, setActive] = useState(false);
+ const [active, setActive] = useState('');
 
- const addActiveClass = () => {
-  active === false ? setActive(true) : setActive(false);
+ const toggleClass = () => {
+  active === 'active' ? setActive('') : setActive('active');
   const container = document.querySelector('.container');
-  container.classList.toggle('active');
+  active === '' ? container.classList.add('active') : container.classList.remove('active');
  };
+
  return (
   <>
    <Container className='container'>
     <NavBar>
      <Menu>
       <h3 className='logo'>SomeLogo</h3>
-      <HamburgerMenu onClick={addActiveClass}>
+      <HamburgerMenu onClick={toggleClass}>
        <Bar className='bar' />
       </HamburgerMenu>
      </Menu>
     </NavBar>
 
-    <Section active={active} />
+    <Section toggleClass={toggleClass} active={active} />
 
     <LinksContainer className='links-container'>
      <ul>

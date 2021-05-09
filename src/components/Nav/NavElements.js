@@ -1,12 +1,19 @@
 import styled from 'styled-components';
 export const Container = styled.div`
  min-height: 100vh;
+
  width: 100%;
  background: rgb(0, 0, 0);
  background: linear-gradient(315deg, rgba(0, 0, 0, 0.9900911048012955) 23%, rgba(73, 67, 67, 1) 83%);
  overflow: hidden;
  transform-style: preserve-3d;
 
+ &.active {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+ }
  &.active .bar {
   transform: rotate(180deg);
   background-color: transparent;
@@ -17,20 +24,7 @@ export const Container = styled.div`
  &.active .bar:after {
   transform: translateY(0) rotate(-45deg);
  }
- &.active .main {
-  animation: main-animation 0.5s ease;
-  transform: perspective(1300px) translateZ(310px) rotateY(20deg) scale(0.5);
-  cursor: pointer;
-  left: 10%;
- }
- @keyframes main-animation {
-  0% {
-   transform: translate(0);
-  }
-  100% {
-   transform: perspective(1300px) translateZ(310px) rotateY(20deg) scale(0.5);
-  }
- }
+
  &.active .links-container li {
   animation: appear 0.5s forwards ease 0.2s;
  }
@@ -45,16 +39,18 @@ export const Container = styled.div`
 `;
 export const NavBar = styled.nav`
  position: fixed;
+
  top: 0;
- left: 0;
- width: 100%;
+
+ right: 0;
+ min-width: 100%;
  z-index: 10;
  height: 3rem;
 `;
 export const Menu = styled.div`
  max-width: 72rem;
  width: 100%;
-
+ /* position: fixed; */
  margin: 0 auto;
  padding: 0 2rem;
 
@@ -107,7 +103,6 @@ export const LinksContainer = styled.div`
  top: 0;
  height: 100vh;
  z-index: 2;
-
  display: flex;
  align-items: center;
  justify-content: center;
@@ -117,7 +112,7 @@ export const LinksContainer = styled.div`
  li {
   color: var(--light-accent-color);
   padding: 0.7rem 0;
-  /* display: inline-block; */
+
   font-size: 1rem;
   font-weight: 300;
   text-transform: uppercase;

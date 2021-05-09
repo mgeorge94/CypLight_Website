@@ -5,6 +5,7 @@
 }
 body {
  font-family: 'Poppins', sans-serif;
+ overflow-y: scroll;
 }
 :root {
  --light-accent-color: yellow;
