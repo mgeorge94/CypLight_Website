@@ -2,7 +2,7 @@ import React from 'react';
 import { SectionContainer, Header } from './SectionElements';
 import { Data } from './SectionData';
 const Section = ({ active, toggleClass }) => {
- const sections = Array.from(document.querySelectorAll('.section'));
+ const sections = document.querySelectorAll('.section');
 
  const goToSection = () => {
   sections.forEach((section) => {
@@ -19,8 +19,6 @@ const Section = ({ active, toggleClass }) => {
 
  let classesArr = [];
  let reverseClassesArr;
- let index = 0;
-
  const pushClasses = () => {
   sections.forEach((section) => {
    for (let i = 0; i < Data.length; i++) {
@@ -29,53 +27,27 @@ const Section = ({ active, toggleClass }) => {
     }
    }
   });
-
-  reverseClassesArr = classesArr.reverse();
+  console.log(classesArr);
+  //   reverseClassesArr = classesArr.reverse();
  };
+
  const scrollThroughNav = (arr) => {
   pushClasses();
-  //  !de ce varianta asta nu merge
-  //   for (let i = 0; i < Data.length; i++) {
-  //    if (i > Data.length - 1) i = 0;
-  //    if (i < 0) i = Data.length - 1;
-
-  //    if (sections[i].classList.contains('first')) {
-  //     sections[i].style.transform = 'perspective(1300px) translateZ(500px) rotateY(20deg) scale(0.6) translateY(300%)';
-
-  //     sections[i].classList.replace('first', 'fifth');
-  //    } else {
-  //     sections[i].classList.replace(arr[i], arr[i - 1]);
-  //    }
-  //   }
-  ////////////////////////////////////////////////////////////////
-  //  !de ce asta (parca) merge ci cea de mai sus nu
-  sections.forEach((section) => {
-   //!if arrived at the end go back
-   if (index > Data.length - 1) index = 0;
-   if (index < 0) index = Data.length - 1;
-
-   if (section.classList.contains('first')) {
-    section.style.transform = 'perspective(1300px) translateZ(500px) rotateY(20deg) scale(0.6) translateY(300%)';
-    setTimeout(() => {
-     section.classList.replace('first', 'fifth');
-     //!am setat transform aici simportant pe cele din css ca altfel nu mergea
-     section.style.transform = 'perspective(1300px) translateZ(310px) rotateY(20deg) scale(0.5)';
-    }, 500);
-   }
-   if (section.classList.contains('second')) {
-    section.classList.replace('second', 'first');
-   }
-   if (section.classList.contains('third')) {
-    section.classList.replace('third', 'second');
-   }
-   if (section.classList.contains('fourth')) {
-    section.classList.replace('fourth', 'third');
-   }
-   if (section.classList.contains('fifth')) {
-    section.classList.replace('fifth', 'fourth');
-   }
-  });
+  for (let i = 0; i < Data.length; i++) {
+   sections.forEach((section) => {
+    if (i <= 5) {
+     if (!section.classList.contains('first')) {
+      section.classList.replace(arr[i + 1], arr[i]);
+     } else {
+      //   section.classList.replace('first', 'passed');
+      section.style.transform = 'perspective(1800px) translateZ(10px) rotateY(20deg) scale(0.7) translateX(10%)';
+     }
+    }
+   });
+  }
  };
+ scrollThroughNav(classesArr);
+
  function detectMouseWheelDirection(e) {
   var delta = null,
    direction = false;
@@ -100,12 +72,11 @@ const Section = ({ active, toggleClass }) => {
   // see the direction in the console
   if (direction === 'down') {
    // do something, like show the next page
-   index++;
+   //   scrollDownOnPage();
    scrollThroughNav(classesArr);
   } else if (direction === 'up') {
    // do something, like show the previous page
-   index--;
-   scrollThroughNav(reverseClassesArr);
+   //    scrollThroughNav(classesArr.reverse());
   } else {
    // this means the direction of the mouse wheel could not be determined
   }

@@ -6,7 +6,7 @@ export const Data = [
    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, sed dolores! Aliquid voluptas dolorem illo, dolor in explicabo debitis labore ducimus repellat sit laborum non aperiam quod nihil quia? Consequuntur repellat maxime laboriosam similique tenetur? Sint pariatur quae doloribus, dicta aperiam mollitia inventore, illo eos expedita laudantium, nulla commodi totam.',
   buttonLabel: 'Cum te pot ajuta',
   to: 'what-i-do',
-  class: ' first section',
+  class: 'first',
  },
  {
   id: 'what-i-do',
@@ -15,7 +15,7 @@ export const Data = [
    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, sed dolores! Aliquid voluptas dolorem illo, dolor in explicabo debitis labore ducimus repellat sit laborum non aperiam quod nihil quia? Consequuntur repellat maxime laboriosam similique tenetur? Sint pariatur quae doloribus, dicta aperiam mollitia inventore, illo eos expedita laudantium, nulla commodi totam.',
   buttonLabel: 'Vezi ce am facut',
   to: 'portofolio',
-  class: ' second section',
+  class: 'second',
  },
 
  {
@@ -25,7 +25,7 @@ export const Data = [
    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, sed dolores! Aliquid voluptas dolorem illo, dolor in explicabo debitis labore ducimus repellat sit laborum non aperiam quod nihil quia? Consequuntur repellat maxime laboriosam similique tenetur? Sint pariatur quae doloribus, dicta aperiam mollitia inventore, illo eos expedita laudantium, nulla commodi totam.',
   buttonLabel: 'Vezi ce spune lumea',
   to: 'review',
-  class: ' third section ',
+  class: 'third',
  },
  {
   id: 'review',
@@ -34,7 +34,7 @@ export const Data = [
    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, sed dolores! Aliquid voluptas dolorem illo, dolor in explicabo debitis labore ducimus repellat sit laborum non aperiam quod nihil quia? Consequuntur repellat maxime laboriosam similique tenetur? Sint pariatur quae doloribus, dicta aperiam mollitia inventore, illo eos expedita laudantium, nulla commodi totam.',
   buttonLabel: 'Contactează-mă',
   to: 'contact',
-  class: ' fourth section',
+  class: 'fourth',
  },
  {
   id: 'contact',
@@ -43,6 +43,6 @@ export const Data = [
    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, sed dolores! Aliquid voluptas dolorem illo, dolor in explicabo debitis labore ducimus repellat sit laborum non aperiam quod nihil quia? Consequuntur repellat maxime laboriosam similique tenetur? Sint pariatur quae doloribus, dicta aperiam mollitia inventore, illo eos expedita laudantium, nulla commodi totam.',
   buttonLabel: 'Cum te pot ajuta',
   to: 'what-i-do',
-  class: ' fifth section',
+  class: 'fifth',
  },
 ];

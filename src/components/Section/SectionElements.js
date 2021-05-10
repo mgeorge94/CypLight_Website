@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 export const SectionContainer = styled.div`
- position: relative;
  width: 100%;
  left: 0;
  z-index: 5;
@@ -8,9 +7,15 @@ export const SectionContainer = styled.div`
  overflow: hidden;
  transform-origin: left;
  transform-style: preserve-3d;
-
- transition: 0.6s;
- &.section.active {
+ &.normal {
+  transform: none;
+  background: red;
+  transition: 0.6s;
+ }
+ /* &.passed {
+  transform: perspective(1800px) translateZ(1000px) rotateY(20deg) scale(0.7) translateX(10%) translateX(300%);
+ } */
+ &.active {
   width: 100%;
   height: 100vh;
   top: 0;
@@ -19,14 +24,15 @@ export const SectionContainer = styled.div`
  }
  &.active.first {
   cursor: pointer;
-  /* animation: section-animation 0.5s ease; */
-  transform: perspective(1300px) translateZ(310px) rotateY(20deg) scale(0.5);
+
+  /* !comented because it was set from react */
+  /* transform: perspective(1300px) translateZ(310px) rotateY(20deg) scale(0.5); */
   cursor: pointer;
   left: 10%;
-  /* display: none; */
+
   z-index: 10;
   transition: 0.6s ease;
-  /* background: rbga(2, 9, 83, 0.4); */
+  background: rbga(2, 9, 83, 0.4);
  }
  @keyframes section-animation {
   0% {
@@ -48,7 +54,7 @@ export const SectionContainer = styled.div`
   z-index: -1;
   transition: transform 10 ease;
   background: rgba(100, 100, 1, 0.9);
-  transform: perspective(1300px) translateZ(215px) rotateY(20deg) scale(0.5);
+  transform: perspective(1300px) translateZ(215px) rotateY(20deg) scale(0.5) !important;
  }
  &.active.third {
   left: 6%;
@@ -56,7 +62,7 @@ export const SectionContainer = styled.div`
   transition: transform 0.5s ease;
   background: rgba(165, 165, 0, 0.534);
 
-  transform: perspective(1300px) translateZ(150px) rotateY(20deg) scale(0.5);
+  transform: perspective(1300px) translateZ(150px) rotateY(20deg) scale(0.5) !important;
  }
  &.active.fourth {
   left: 4%;
@@ -64,14 +70,14 @@ export const SectionContainer = styled.div`
   transition: transform 0.5s ease;
 
   background: rgba(196, 196, 0, 0.822);
-  transform: perspective(1300px) translateZ(110px) rotateY(20deg) scale(0.48);
+  transform: perspective(1300px) translateZ(110px) rotateY(20deg) scale(0.48) !important;
  }
  &.active.fifth {
   left: 2%;
   z-index: -5;
   transition: transform 0.5s ease;
   background: rgb(255, 255, 0);
-  transform: perspective(1300px) translateZ(60px) rotateY(20deg) scale(0.48);
+  transform: perspective(1300px) translateZ(60px) rotateY(20deg) scale(0.48) !important;
  }
 `;
 export const Header = styled.header`

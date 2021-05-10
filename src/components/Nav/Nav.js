@@ -4,9 +4,14 @@ import Section from '../Section/Section';
 import { Container, NavBar, Menu, HamburgerMenu, Bar, LinksContainer } from './NavElements';
 const NavElements = () => {
  const [active, setActive] = useState('');
-
+ //  const [transform, setTransform] = useState('');
  const toggleClass = () => {
-  active === 'active' ? setActive('') : setActive('active');
+  if (active === 'active') {
+   setActive('');
+   //    setTransform('transform: perspective(none) translateZ(0px) rotateY(0deg) scale(1) translateY(0)');
+  } else {
+   setActive('active ');
+  }
   const container = document.querySelector('.container');
   active === '' ? container.classList.add('active') : container.classList.remove('active');
  };
