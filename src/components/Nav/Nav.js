@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Data } from '../Sections/SectionData';
+
 import SectionsContainer from '../Sections/SectionsContainer';
-import { Container, NavBar, Menu, HamburgerMenu, Bar, LinksContainer } from './NavElements';
-import logo from '../../images/logo.png';
+import { Container, LinksContainer } from './NavElements';
+import NavBar from '../NavBar/NavBar';
+
 const NavElements = () => {
  const [active, setActive] = useState('');
 
@@ -16,13 +18,7 @@ const NavElements = () => {
  return (
   <>
    <Container className='container'>
-    <NavBar className='nav'>
-     {/* <h3 className='logo'>SomeLogo</h3> */}
-     <img src={logo} alt='logo'></img>
-     <HamburgerMenu onClick={toggleClass}>
-      <Bar className='bar' />
-     </HamburgerMenu>
-    </NavBar>
+    <NavBar toggleClass={toggleClass} />
 
     <SectionsContainer toggleClass={toggleClass} active={active} />
 

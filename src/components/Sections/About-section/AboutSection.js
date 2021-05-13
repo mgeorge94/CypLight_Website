@@ -5,14 +5,22 @@ import { motion } from 'framer-motion';
 import { Description, Image, AboutContainer } from './AboutSectionElements';
 
 const AboutSection = ({ data }) => {
+ const titleAnimation = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { duration: 4 } },
+ };
+ const animateContainerTitle = {
+  hidden: { x: 100 },
+  show: { x: 0, transition: { duration: 1 } },
+ };
  return (
   <>
    <AboutContainer>
     <Description>
-     <div className='title'>
+     <motion.div variants={animateContainerTitle} initial='hidden' animate='show' className='title'>
       <h2>
        {data.h2}{' '}
-       <motion.span animate={{ opacity: 1, transition: { duration: 2 } }} initial={{ opacity: 0 }}>
+       <motion.span variants={titleAnimation} initial='hidden' animate='show'>
         {data.h2Span}
        </motion.span>
       </h2>
@@ -23,7 +31,7 @@ const AboutSection = ({ data }) => {
       <div className='btn-wrapper'>
        <Button>{data.buttonLabel}</Button>
       </div>
-     </div>
+     </motion.div>
     </Description>
 
     <Image>

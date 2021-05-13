@@ -4,13 +4,19 @@ import { Data } from './SectionData';
 import AboutSection from './About-section/AboutSection';
 import Role from './Role-section/Role';
 import FaqSection from './Faq-section/FaqSection';
-import { Link } from 'react-scroll';
+// import { Link } from 'react-scroll';
+import { Route, Link } from 'react-router-dom';
+import PortofolioPage from '../pages/Portofolio/PortofolioPage';
+import AboutPage from '../pages/About/About';
+
 const SectionsContainer = ({ active, toggleClass }) => {
  const sections = document.querySelectorAll('.section');
-
- ////////////////////////////////////////////////////////////////
-
- //////////////////////////
+ let exactValue = true;
+ (function seeAllPages() {
+  if (active === 'active') {
+   exactValue = false;
+  } else exactValue = true;
+ })();
  const goToSection = (section) => {
   if (active === 'active') {
    section.addEventListener('click', toggleClass);
@@ -130,7 +136,7 @@ const SectionsContainer = ({ active, toggleClass }) => {
  return (
   <>
    <SectionContainer>
-    <Link
+    {/*  <Link
      smooth={true}
      duration={500}
      spy={true}
@@ -170,6 +176,22 @@ const SectionsContainer = ({ active, toggleClass }) => {
     >
      <IndividualSection id={Data[2].id} className={`section ${active} ${Data[2].class}`}>
       <FaqSection data={Data[2]} />
+     </IndividualSection>
+             </Link>
+             */}
+
+    <Link to='/acasa'>
+     <IndividualSection id={Data[3].id} className={`section ${active} first`}>
+      <Route exact={exactValue} path='/acasa'>
+       <AboutPage data={Data} />
+      </Route>
+     </IndividualSection>
+    </Link>
+    <Link to='/portofoliu'>
+     <IndividualSection id={Data[0].id} className={`section ${active} second`}>
+      <Route exact={exactValue} path='/portofoliu'>
+       <PortofolioPage />
+      </Route>
      </IndividualSection>
     </Link>
    </SectionContainer>
