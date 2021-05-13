@@ -7,7 +7,12 @@ export const Container = styled.div`
  background: linear-gradient(315deg, rgba(0, 0, 0, 0.9900911048012955) 23%, rgba(73, 67, 67, 1) 83%);
  overflow: hidden;
  transform-style: preserve-3d;
-
+ &.active .nav {
+  img {
+   transition: all 0.2s ease-in-out;
+   opacity: 0;
+  }
+ }
  &.active {
   position: fixed;
 
@@ -39,27 +44,34 @@ export const Container = styled.div`
 `;
 export const NavBar = styled.nav`
  position: fixed;
-
+ padding: 0;
  top: 0;
+
+ background: linear-gradient(
+  180deg,
+  rgba(46, 46, 46, 0.9755252442773985) 0%,
+  rgba(49, 49, 49, 0.7010154403558299) 52%,
+  rgba(73, 67, 67, 0) 100%
+ );
 
  right: 0;
  min-width: 100%;
  z-index: 10;
- height: 3rem;
-`;
-export const Menu = styled.div`
- max-width: 72rem;
- width: 100%;
- /* position: fixed; */
- margin: 0 auto;
- padding: 0 2rem;
 
- display: flex;
- justify-content: space-between;
- align-items: center;
- color: white;
+ img {
+  position: relative;
+  top: 0rem;
+  left: 5rem;
+  height: 150px;
+  opacity: 1;
+  transition: opacity 0.2s linear;
+ }
 `;
+
 export const HamburgerMenu = styled.div`
+ position: absolute;
+ top: 1rem;
+ right: 3rem;
  height: 4rem;
  width: 3rem;
  cursor: pointer;
@@ -134,6 +146,10 @@ export const LinksContainer = styled.div`
    filter: brightness(80%);
    transform: translateY(-2px);
    cursor: pointer;
+  }
+  &.active {
+   transform: scale(1.1);
+   font-weight: 600;
   }
  }
 `;

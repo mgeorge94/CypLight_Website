@@ -10,3 +10,26 @@ body {
 :root {
  --light-accent-color: yellow;
 }
+h2 {
+ font-size: 3.5rem;
+ font-weight: 300;
+ color: var(--light-accent-color);
+ margin: 5rem 0;
+}
+h4 {
+ font-size: 2rem;
+ font-weight: bold;
+ color: white;
+}
+span {
+ font-weight: bold;
+ color: var(--light-accent-color);
+}
+a {
+ font-size: 1.1.rem;
+}
+p {
+ color: white;
+ font-size: 1.4rem;
+ margin: 3rem 0rem;
+}

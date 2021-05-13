@@ -1,21 +1,21 @@
 import styled from 'styled-components';
+
 export const SectionContainer = styled.div`
+ height: 100%;
+ width: 100%;
+`;
+export const IndividualSection = styled.div`
+ position: relative;
  width: 100%;
  left: 0;
  z-index: 5;
- background: rgb(46, 46, 46);
+ background: #2e2e2e;
  overflow: hidden;
  transform-origin: left;
  transform-style: preserve-3d;
- &.normal {
-  transform: none;
-  background: red;
-  transition: 0.6s;
- }
- /* &.passed {
-  transform: perspective(1800px) translateZ(1000px) rotateY(20deg) scale(0.7) translateX(10%) translateX(300%);
- } */
- &.active {
+
+ transition: 0.6s;
+ &.section.active {
   width: 100%;
   height: 100vh;
   top: 0;
@@ -24,15 +24,14 @@ export const SectionContainer = styled.div`
  }
  &.active.first {
   cursor: pointer;
-
-  /* !comented because it was set from react */
-  /* transform: perspective(1300px) translateZ(310px) rotateY(20deg) scale(0.5); */
+  /* animation: section-animation 0.5s ease; */
+  transform: perspective(1300px) translateZ(310px) rotateY(20deg) scale(0.5);
   cursor: pointer;
   left: 10%;
-
+  /* display: none; */
   z-index: 10;
   transition: 0.6s ease;
-  background: rbga(2, 9, 83, 0.4);
+  /* background: rbga(2, 9, 83, 0.4); */
  }
  @keyframes section-animation {
   0% {
@@ -48,13 +47,16 @@ export const SectionContainer = styled.div`
  &.active.first:hover {
   transform: perspective(1300px) translateZ(340px) rotateY(20deg) scale(0.5);
  }
+ &.active.animated {
+  transform: perspective(1300px) translateZ(500px) rotateY(20deg) scale(0.6) translateY(300%);
+ }
 
  &.active.second {
   left: 8%;
   z-index: -1;
   transition: transform 10 ease;
   background: rgba(100, 100, 1, 0.9);
-  transform: perspective(1300px) translateZ(215px) rotateY(20deg) scale(0.5) !important;
+  transform: perspective(1300px) translateZ(215px) rotateY(20deg) scale(0.5);
  }
  &.active.third {
   left: 6%;
@@ -62,7 +64,7 @@ export const SectionContainer = styled.div`
   transition: transform 0.5s ease;
   background: rgba(165, 165, 0, 0.534);
 
-  transform: perspective(1300px) translateZ(150px) rotateY(20deg) scale(0.5) !important;
+  transform: perspective(1300px) translateZ(150px) rotateY(20deg) scale(0.5);
  }
  &.active.fourth {
   left: 4%;
@@ -70,31 +72,13 @@ export const SectionContainer = styled.div`
   transition: transform 0.5s ease;
 
   background: rgba(196, 196, 0, 0.822);
-  transform: perspective(1300px) translateZ(110px) rotateY(20deg) scale(0.48) !important;
+  transform: perspective(1300px) translateZ(110px) rotateY(20deg) scale(0.48);
  }
  &.active.fifth {
   left: 2%;
   z-index: -5;
   transition: transform 0.5s ease;
   background: rgb(255, 255, 0);
-  transform: perspective(1300px) translateZ(60px) rotateY(20deg) scale(0.48) !important;
- }
-`;
-export const Header = styled.header`
- min-height: 100vh;
- width: 100%;
-
- position: relative;
-
- .title {
-  font-size: 2.7rem;
-  color: var(--light-accent-color);
-  padding-top: 15rem;
-  padding-left: 15rem;
-  padding-bottom: 10rem;
- }
- p {
-  color: white;
-  padding-left: 10rem;
+  transform: perspective(1300px) translateZ(60px) rotateY(20deg) scale(0.48);
  }
 `;
