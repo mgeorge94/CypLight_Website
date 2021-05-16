@@ -11,4 +11,3 @@ export const Faq = styled(AboutContainer)`
   width: 100%;
  }
 `;
-export const Question = styled.div``;

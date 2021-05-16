@@ -15,8 +15,11 @@ export const Image = styled.img`
 `;
 export const GridContainer = styled.div`
  display: grid;
- width: 100%;
- gap: 1.5em;
+ width: 90%;
+ position: relative;
+ margin: 0 auto;
+ gap: 2rem;
+
  padding: 1rem;
  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
 `;

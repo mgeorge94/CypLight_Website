@@ -3,7 +3,8 @@ import { Carousel } from '3d-react-carousal';
 import { projects } from './PortofolioData';
 import { DetailsContainer, SliderContainer } from './ProjectDetailsElements';
 import { useHistory } from 'react-router-dom';
-
+import { motion } from 'framer-motion';
+import { titleAnimation, containerAnimation, pageAnimation, fade } from '../../Animation';
 const ProjectDetails = ({ active }) => {
  //get url location
  const history = useHistory();
@@ -22,17 +23,23 @@ const ProjectDetails = ({ active }) => {
    return <img src={img} alt={project.alt} />;
   });
  }
- // set Hide class
+ //page Animation
 
  return (
   <>
    {project && (
-    <DetailsContainer className='details-container'>
-     <h2>{project.name}</h2>
+    <DetailsContainer exit='exit' variants={pageAnimation} initial='hidden' animate='show' className='details-container'>
+     <motion.h2 variants={titleAnimation} initial='hidden' animate='show'>
+      {project.name}
+     </motion.h2>
+     <motion.p variants={fade} initial='hidden' animate='show' variants={containerAnimation} initial='hidden' animate='show'>
+      {project.description}
+     </motion.p>
 
-     <SliderContainer>
-      <Carousel slides={slides} autoplay={true} interval={2000} />
+     <SliderContainer variants={fade} initial='hidden' animate='show' variants={fade} initial='hidden' animate='show'>
+      <Carousel slides={slides} />
      </SliderContainer>
+
      <h4>
       De ce să îți montezi <span>{project.alt} </span>?
      </h4>

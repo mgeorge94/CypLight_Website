@@ -1,14 +1,15 @@
 import React from 'react';
 import { SectionContainer, IndividualSection, Header } from './SectionsElements';
 import { Data } from './SectionData';
-import AboutSection from './About-section/AboutSection';
-import Role from './Role-section/Role';
-import FaqSection from './Faq-section/FaqSection';
+// import AboutSection from './About-section/AboutSection';
+// import Role from './Role-section/Role';
+// import FaqSection from './Faq-section/FaqSection';
 // import { Link } from 'react-scroll';
 import ProjectDetails from '../pages/Portofolio/ProjectDetails';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, useLocation, Switch } from 'react-router-dom';
 import PortofolioPage from '../pages/Portofolio/PortofolioPage';
 import AboutPage from '../pages/About/About';
+import { AnimatePresence } from 'framer-motion';
 
 const SectionsContainer = ({ active, toggleClass }) => {
  const sections = document.querySelectorAll('.section');
@@ -44,7 +45,7 @@ const SectionsContainer = ({ active, toggleClass }) => {
     // goToSection();
 
     setTimeout(() => {
-     section.classList.replace('animated', 'fifth');
+     section.classList.replace('animated', 'third');
     }, 100);
    }
    if (section.classList.contains('second')) {
@@ -54,30 +55,32 @@ const SectionsContainer = ({ active, toggleClass }) => {
    if (section.classList.contains('third')) {
     section.classList.replace('third', 'second');
    }
-   if (section.classList.contains('fourth')) {
-    section.classList.replace('fourth', 'third');
-   }
-   if (section.classList.contains('fifth')) {
-    section.classList.replace('fifth', 'fourth');
-   }
+   //    if (section.classList.contains('fourth')) {
+   //     section.classList.replace('fourth', 'third');
+   //    }
+   //    if (section.classList.contains('fifth')) {
+   //     section.classList.replace('fifth', 'fourth');
+   //    }
   });
  };
  let scrollUpOnPage = () => {
   sections.forEach((section) => {
-   if (section.classList.contains('fifth')) {
-    section.classList.replace('fifth', 'animated');
+   if (section.classList.contains('third')) {
+    section.classList.replace('third', 'animated');
     // goToSection(section);
     setTimeout(() => {
      section.classList.replace('animated', 'first');
      goToSection(section);
     }, 100);
-   } else if (section.classList.contains('fourth')) {
-    section.classList.replace('fourth', 'fifth');
+    //    } else if (section.classList.contains('fourth')) {
+    //     section.classList.replace('fourth', 'fifth');
    } else if (section.classList.contains('second')) {
     section.classList.replace('second', 'third');
-   } else if (section.classList.contains('third')) {
-    section.classList.replace('third', 'fourth');
-   } else if (section.classList.contains('first')) {
+   }
+   //    else if (section.classList.contains('third')) {
+   //     section.classList.replace('third', 'fourth');
+   //    }
+   else if (section.classList.contains('first')) {
     section.classList.replace('first', 'second');
    }
   });
@@ -132,29 +135,34 @@ const SectionsContainer = ({ active, toggleClass }) => {
    handleMouseWheelDirection(detectMouseWheelDirection(e));
   });
  }
-
+ //check if component is unmounted
+ const location = useLocation();
  return (
-  <Router>
-   <SectionContainer>
-    <Link to='/acasa'>
-     <IndividualSection id={Data[3].id} className={`section ${active} first`}>
-      <Route exact={exactValue} path='/'>
-       <AboutPage data={Data} />
+  <AnimatePresence exitBeforeEnter>
+   <Switch Location={location} key={location.pathname}>
+    <Router>
+     <SectionContainer>
+      <Link to='/'>
+       <IndividualSection id={Data[3].id} className={`section ${active} first`}>
+        <Route exact={exactValue} path='/'>
+         <AboutPage data={Data} />
+        </Route>
+       </IndividualSection>
+      </Link>
+      <Link to='/portofoliu'>
+       <IndividualSection id={Data[0].id} className={`section ${active} second`}>
+        <Route exact={exactValue} path='/portofoliu'>
+         <PortofolioPage />
+        </Route>
+       </IndividualSection>
+      </Link>{' '}
+      <Route path='/portofoliu/:id' exact>
+       <ProjectDetails active={active} />
       </Route>
-     </IndividualSection>
-    </Link>
-    <Link to='/portofoliu'>
-     <IndividualSection id={Data[0].id} className={`section ${active} second`}>
-      <Route exact={exactValue} path='/portofoliu'>
-       <PortofolioPage />
-      </Route>
-     </IndividualSection>
-    </Link>
-    <Route path='/portofoliu/:id' exact>
-     <ProjectDetails active={active} />
-    </Route>
-   </SectionContainer>
-  </Router>
+     </SectionContainer>
+    </Router>
+   </Switch>
+  </AnimatePresence>
  );
 };
 

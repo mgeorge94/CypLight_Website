@@ -1,6 +1,8 @@
 import styled from 'styled-components';
-import { Carousel } from '3d-react-carousal';
-export const DetailsContainer = styled.div`
+
+import { motion } from 'framer-motion';
+
+export const DetailsContainer = styled(motion.div)`
  width: 100%;
  padding: 5rem;
  padding-top: 10rem;
@@ -15,12 +17,11 @@ export const DetailsContainer = styled.div`
  li {
   padding: 1rem;
  }
- .slider-right {
-  div i {
-  }
+ p {
+  padding-bottom: 5rem;
  }
 `;
-export const SliderContainer = styled.div`
+export const SliderContainer = styled(motion.div)`
  width: 100%;
  position: Relative;
  max-width: 1200px;

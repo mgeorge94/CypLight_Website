@@ -2,53 +2,47 @@ import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import { projects } from './PortofolioData';
 import { ProjectsContainer, GridContainer, GridElement } from './PortofolioElements';
+
+import { pageAnimation, gridAnimation, gridElementAnimation, titleAnimation, containerAnimation } from '../../Animation';
 import { motion } from 'framer-motion';
-import ProjectDetails from './ProjectDetails';
 
 const PortofolioPage = () => {
- const AnimatePage = {
-  hidden: { y: 1000 },
-  show: { y: 0, transition: { duration: 1 } },
- };
- const AnimateGrid = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.2 } },
- };
- const AnimateGridElement = {
-  hidden: { x: 1000, opacity: 0 },
-  show: { x: 0, opacity: 1, transition: { duration: 1 } },
- };
  return (
-  <motion.div variants={AnimatePage} initial='hidden' animate='show'>
-   <ProjectsContainer>
-    <h2>
-     Proiecte la care <span>am lucrat</span>
-    </h2>
-    <motion.div variants={AnimateGrid} initial='hidden' animate='show'>
-     <GridContainer>
-      {projects.map((project) => {
-       return (
-        <>
-         <Link key={project.id} to={project.url} id={project.id}>
-          <motion.div
-           whileHover={{
-            scale: 0.95,
-            transition: { duration: 0.5 },
-           }}
-           variants={AnimateGridElement}
-          >
-           <GridElement>
-            <h6>{project.name}</h6>
-            <img src={project.gridPic} alt={project.alt} />
-           </GridElement>
-          </motion.div>
-         </Link>
-        </>
-       );
-      })}
-     </GridContainer>
-    </motion.div>
-   </ProjectsContainer>
+  <motion.div exit='exit' variants={pageAnimation} initial='hidden' animate='show'>
+   <motion.div variants={gridAnimation} initial='hidden' animate='show'>
+    <ProjectsContainer>
+     <h2>
+      Proiecte la care{' '}
+      <motion.span variants={titleAnimation} initial='hidden' animate='show'>
+       am lucrat
+      </motion.span>
+     </h2>
+     <motion.div variants={gridAnimation} initial='hidden' animate='show'>
+      <GridContainer>
+       {projects.map((project) => {
+        return (
+         <>
+          <Link key={project.id} to={project.url} id={project.id}>
+           <motion.div
+            whileHover={{
+             scale: 0.95,
+             transition: { duration: 0.5 },
+            }}
+            variants={gridElementAnimation}
+           >
+            <GridElement>
+             <h6>{project.name}</h6>
+             <img src={project.gridPic} alt={project.alt} />
+            </GridElement>
+           </motion.div>
+          </Link>
+         </>
+        );
+       })}
+      </GridContainer>
+     </motion.div>
+    </ProjectsContainer>
+   </motion.div>
   </motion.div>
  );
 };
