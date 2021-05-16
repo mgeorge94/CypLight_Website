@@ -3,6 +3,9 @@ export const ProjectsContainer = styled.section`
  padding-top: 10rem;
  h2 {
   padding-left: 5rem;
+  span {
+   color: white;
+  }
  }
 `;
 export const Image = styled.img`

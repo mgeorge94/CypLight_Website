@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import { projects } from './PortofolioData';
 import { ProjectsContainer, GridContainer, GridElement } from './PortofolioElements';
 import { motion } from 'framer-motion';
+import ProjectDetails from './ProjectDetails';
 
 const PortofolioPage = () => {
  const AnimatePage = {
@@ -28,7 +29,7 @@ const PortofolioPage = () => {
       {projects.map((project) => {
        return (
         <>
-         <Link to='/details'>
+         <Link key={project.id} to={project.url} id={project.id}>
           <motion.div
            whileHover={{
             scale: 0.95,

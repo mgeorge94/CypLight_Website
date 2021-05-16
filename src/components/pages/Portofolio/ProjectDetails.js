@@ -1,31 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Carousel } from '3d-react-carousal';
 import { projects } from './PortofolioData';
 import { DetailsContainer, SliderContainer } from './ProjectDetailsElements';
+import { useHistory } from 'react-router-dom';
 
-const ProjectDetails = () => {
- const slides = projects[0].pictures.map((img) => {
-  return <img src={img} alt={projects[0]} />;
- });
+const ProjectDetails = ({ active }) => {
+ //get url location
+ const history = useHistory();
+ const url = history.location.pathname;
+ const [theProjects, setTheProjects] = useState(projects);
+ const [project, setProject] = useState(null);
+
+ useEffect(() => {
+  const currentProject = theProjects.filter((projects) => projects.url === url);
+  setProject(currentProject[0]);
+ }, [theProjects, url]);
+
+ let slides;
+ if (project !== null) {
+  slides = project.pictures.map((img) => {
+   return <img src={img} alt={project.alt} />;
+  });
+ }
+ // set Hide class
 
  return (
-  <DetailsContainer>
-   <h2>Navigații</h2>
+  <>
+   {project && (
+    <DetailsContainer className='details-container'>
+     <h2>{project.name}</h2>
 
-   <SliderContainer>
-    <Carousel slides={slides} />
-   </SliderContainer>
-   <h4>De ce să îți montezi?</h4>
-   <ol>
-    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid dolores laudantium ducimus delectus od</li>
-    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid dolores laudantium ducimus delectus od</li>
-    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid dolores laudantium ducimus delectus od</li>
-    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid dolores laudantium ducimus delectus od</li>
-    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid dolores laudantium ducimus delectus od</li>
-    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid dolores laudantium ducimus delectus od</li>
-    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid dolores laudantium ducimus delectus od</li>
-   </ol>
-  </DetailsContainer>
+     <SliderContainer>
+      <Carousel slides={slides} autoplay={true} interval={2000} />
+     </SliderContainer>
+     <h4>
+      De ce să îți montezi <span>{project.alt} </span>?
+     </h4>
+     <ol>
+      {project.avantaje.map((avantaj, index) => {
+       return <li key={index}>{avantaj}</li>;
+      })}
+     </ol>
+    </DetailsContainer>
+   )}
+  </>
  );
 };
 

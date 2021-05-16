@@ -6,7 +6,7 @@ import Role from './Role-section/Role';
 import FaqSection from './Faq-section/FaqSection';
 // import { Link } from 'react-scroll';
 import ProjectDetails from '../pages/Portofolio/ProjectDetails';
-import { Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import PortofolioPage from '../pages/Portofolio/PortofolioPage';
 import AboutPage from '../pages/About/About';
 
@@ -34,7 +34,6 @@ const SectionsContainer = ({ active, toggleClass }) => {
     }
    }
   });
-  console.log(classesArr);
   //   reverseClassesArr = classesArr.reverse();
  })();
 
@@ -135,55 +134,11 @@ const SectionsContainer = ({ active, toggleClass }) => {
  }
 
  return (
-  <>
+  <Router>
    <SectionContainer>
-    {/*  <Link
-     smooth={true}
-     duration={500}
-     spy={true}
-     offset={-80}
-     to={Data[0].id}
-     exact='true'
-     className='section-link'
-     key={Data[0].id}
-    >
-     <IndividualSection id={Data[0].id} className={`section ${active} ${Data[0].class}`}>
-      <AboutSection data={Data[0]} />
-     </IndividualSection>
-    </Link>
-    <Link
-     smooth={true}
-     duration={500}
-     spy={true}
-     offset={-80}
-     to={Data[1].id}
-     exact='true'
-     className='section-link'
-     key={Data[1].id}
-    >
-     <IndividualSection id={Data[1].id} className={`section ${active} ${Data[1].class}`}>
-      <Role data={Data[1]} />
-     </IndividualSection>
-    </Link>
-    <Link
-     smooth={true}
-     duration={500}
-     spy={true}
-     offset={-80}
-     to={Data[2].id}
-     exact='true'
-     className='section-link'
-     key={Data[2].id}
-    >
-     <IndividualSection id={Data[2].id} className={`section ${active} ${Data[2].class}`}>
-      <FaqSection data={Data[2]} />
-     </IndividualSection>
-             </Link>
-             */}
-
     <Link to='/acasa'>
      <IndividualSection id={Data[3].id} className={`section ${active} first`}>
-      <Route exact={exactValue} path='/acasa'>
+      <Route exact={exactValue} path='/'>
        <AboutPage data={Data} />
       </Route>
      </IndividualSection>
@@ -195,11 +150,11 @@ const SectionsContainer = ({ active, toggleClass }) => {
       </Route>
      </IndividualSection>
     </Link>
-    <Route path='/details' exact>
-     <ProjectDetails />
+    <Route path='/portofoliu/:id' exact>
+     <ProjectDetails active={active} />
     </Route>
    </SectionContainer>
-  </>
+  </Router>
  );
 };
 

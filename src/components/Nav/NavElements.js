@@ -44,6 +44,10 @@ export const Container = styled.div`
    opacity: 1;
   }
  }
+ //because project details apeared behind the nav slides
+ &.active .details-container {
+  margin-top: 500rem;
+ }
 `;
 
 export const NavInterface = styled.div`
