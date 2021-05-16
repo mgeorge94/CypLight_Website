@@ -29,6 +29,9 @@ export const Container = styled.div`
  &.active .bar:after {
   transform: translateY(0) rotate(-45deg);
  }
+ .links-container {
+  z-index: -1;
+ }
 
  &.active .links-container li {
   animation: appear 0.5s forwards ease 0.2s;

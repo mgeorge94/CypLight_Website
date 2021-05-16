@@ -5,6 +5,7 @@ import AboutSection from './About-section/AboutSection';
 import Role from './Role-section/Role';
 import FaqSection from './Faq-section/FaqSection';
 // import { Link } from 'react-scroll';
+import ProjectDetails from '../pages/Portofolio/ProjectDetails';
 import { Route, Link } from 'react-router-dom';
 import PortofolioPage from '../pages/Portofolio/PortofolioPage';
 import AboutPage from '../pages/About/About';
@@ -194,6 +195,9 @@ const SectionsContainer = ({ active, toggleClass }) => {
       </Route>
      </IndividualSection>
     </Link>
+    <Route path='/details' exact>
+     <ProjectDetails />
+    </Route>
    </SectionContainer>
   </>
  );

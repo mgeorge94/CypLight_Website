@@ -8,6 +8,32 @@ import img5 from '../../../images/portofolio-img/nav/nav4.jpg';
 export const projects = [
  {
   name: 'Navigații',
-  pictures: [img1, img2, img3, img4, img5],
+  gridPic: img1,
+  alt: 'navigatie masina',
+  pictures: [img2, img3, img4, img5],
+ },
+ {
+  name: 'Navigații',
+  gridPic: img1,
+
+  pictures: [img2, img3, img4, img5],
+ },
+ {
+  name: 'Lumini ambientale',
+  gridPic: img1,
+  alt: 'lumini ambientale masina',
+  pictures: [img2, img3, img4, img5],
+ },
+ {
+  name: 'Leduri',
+  gridPic: img1,
+  alt: 'becuri led masina',
+  pictures: [img2, img3, img4, img5],
+ },
+ {
+  name: 'Boxe',
+  gridPic: img1,
+  alt: 'boxe masina',
+  pictures: [img2, img3, img4, img5],
  },
 ];

@@ -1,54 +1,54 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import { projects } from './PortofolioData';
-import { ProjectsContainer, Image, GridContainer, GridElement } from './PortofolioElements';
+import { ProjectsContainer, GridContainer, GridElement } from './PortofolioElements';
+import { motion } from 'framer-motion';
+
 const PortofolioPage = () => {
+ const AnimatePage = {
+  hidden: { y: 1000 },
+  show: { y: 0, transition: { duration: 1 } },
+ };
+ const AnimateGrid = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.2 } },
+ };
+ const AnimateGridElement = {
+  hidden: { x: 1000, opacity: 0 },
+  show: { x: 0, opacity: 1, transition: { duration: 1 } },
+ };
  return (
-  <>
-   {projects.map((project) => {
-    return (
-     <>
-      <ProjectsContainer>
-       <h2>Proiecte la care am lucrat</h2>
-
-       <GridContainer>
-        <GridElement>
-         <h6>Navigatii</h6>
-
-         <img src={project.pictures[0]} alt='hjhk' />
-        </GridElement>
-        <GridElement>
-         <h6>Foot-well lights</h6>
-
-         <img src={project.pictures[0]} alt='hjhk' />
-        </GridElement>
-        <GridElement>
-         <h6>lumini interioare</h6>
-
-         <img src={project.pictures[0]} alt='hjhk' />
-        </GridElement>
-        <GridElement>
-         <h6>Leduri</h6>
-
-         <img src={project.pictures[0]} alt='hjhk' />
-        </GridElement>
-        <GridElement>
-         <h6>Boxe</h6>
-
-         <img src={project.pictures[0]} alt='hjhk' />
-        </GridElement>
-       </GridContainer>
-      </ProjectsContainer>
-     </>
-     //  <div>
-     //   <h2>{project.name}</h2>
-     //   {project.pictures.map((picture, index) => {
-     //    return <Image src={project.pictures[index]} alt=' car head-unit' />;
-     //   })}
-     //  </div>
-    );
-   })}
-  </>
+  <motion.div variants={AnimatePage} initial='hidden' animate='show'>
+   <ProjectsContainer>
+    <h2>
+     Proiecte la care <span>am lucrat</span>
+    </h2>
+    <motion.div variants={AnimateGrid} initial='hidden' animate='show'>
+     <GridContainer>
+      {projects.map((project) => {
+       return (
+        <>
+         <Link to='/details'>
+          <motion.div
+           whileHover={{
+            scale: 0.95,
+            transition: { duration: 0.5 },
+           }}
+           variants={AnimateGridElement}
+          >
+           <GridElement>
+            <h6>{project.name}</h6>
+            <img src={project.gridPic} alt={project.alt} />
+           </GridElement>
+          </motion.div>
+         </Link>
+        </>
+       );
+      })}
+     </GridContainer>
+    </motion.div>
+   </ProjectsContainer>
+  </motion.div>
  );
 };
 
