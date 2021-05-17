@@ -3,9 +3,8 @@ import { Button } from '../../ButtonElements';
 import img from '../../../images/me.jpg';
 import { motion } from 'framer-motion';
 import { Description, Image, AboutContainer } from './AboutSectionElements';
-import { fade } from '../../Animation';
 import { useScroll } from '../../useScroll';
-import { containerAnimation, titleAnimation } from '../../Animation';
+import { fade, containerAnimation, titleAnimation } from '../../Animation';
 const AboutSection = ({ data }) => {
  const [element, controls] = useScroll();
 
@@ -31,7 +30,7 @@ const AboutSection = ({ data }) => {
     </Description>
 
     <Image>
-     <img src={img} alt='me' />
+     <motion.img variants={fade} initial='hidden' animate='show' src={img} alt='me' />
     </Image>
    </AboutContainer>
   </>

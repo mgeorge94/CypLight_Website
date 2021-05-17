@@ -48,3 +48,26 @@ export const SliderContainer = styled(motion.div)`
   transform: translateX(-5%);
  }
 `;
+//animation
+export const Frame1 = styled(motion.div)`
+ position: fixed;
+ left: 0;
+ width: 120%;
+ height: 120%;
+ background: var(--light-accent-color);
+ z-index: 2;
+ margin-top: -15rem;
+`;
+export const Frame2 = styled(Frame1)`
+ filter: brightness(60%);
+ z-index: 3;
+`;
+export const Frame3 = styled(Frame1)`
+ filter: brightness(40%);
+ z-index: 4;
+`;
+export const Frame4 = styled(Frame1)`
+ background: #2e2e2e;
+
+ z-index: 5;
+`;

@@ -9,6 +9,7 @@ import ProjectDetails from '../pages/Portofolio/ProjectDetails';
 import { BrowserRouter as Router, Route, Link, useLocation, Switch } from 'react-router-dom';
 import PortofolioPage from '../pages/Portofolio/PortofolioPage';
 import AboutPage from '../pages/About/About';
+import ContactPage from '../pages/Contact/ContactPage';
 import { AnimatePresence } from 'framer-motion';
 
 const SectionsContainer = ({ active, toggleClass }) => {
@@ -153,6 +154,13 @@ const SectionsContainer = ({ active, toggleClass }) => {
        <IndividualSection id={Data[0].id} className={`section ${active} second`}>
         <Route exact={exactValue} path='/portofoliu'>
          <PortofolioPage />
+        </Route>
+       </IndividualSection>
+      </Link>{' '}
+      <Link to='/contact'>
+       <IndividualSection id={Data[0].id} className={`section ${active} third`}>
+        <Route exact={exactValue} path='/contact'>
+         <ContactPage />
         </Route>
        </IndividualSection>
       </Link>{' '}
